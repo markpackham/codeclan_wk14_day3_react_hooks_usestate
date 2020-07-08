@@ -7,11 +7,20 @@ export default function PiggyBank({ title }) {
     setTotal(total + value);
   };
 
+  const withdraw = (value) => {
+    if (total - value < 0) {
+      setTotal(0);
+    } else {
+      setTotal(total - value);
+    }
+  };
+
   return (
     <>
-      <h1>{title}</h1> //NEW
+      <h1>{title}</h1>
       <p>Total: £{total}</p>
       <button onClick={() => deposit(5)}>Deposit</button>
+      <button onClick={() => withdraw(5)}>Withdraw</button>
     </>
   );
 }
